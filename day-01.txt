@@ -1,0 +1,11 @@
+Day 1 - Git Basics
+
+Today I learned:
+
+1. Git
+2. GitHub
+3. git init
+4. git status
+5. git add
+6. git commit
+7. git push
