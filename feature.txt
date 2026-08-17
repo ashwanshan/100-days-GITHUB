@@ -1,0 +1,6 @@
+Feature Branch Practice
+
+Today I learned:
+- How to create a branch
+- How to switch branches
+- Why branches are useful
