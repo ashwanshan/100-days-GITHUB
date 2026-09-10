@@ -1,26 +1,47 @@
- int dp[301];
+map<string,int>dp;
 
-    bool fun(int i, string &s, vector<string> &wordDict) {
-        if(i == s.size())
-            return true;
-        if(dp[i] != -1)
-            return dp[i];
-        string temp = "";
-        for(int j = i; j < s.size(); j++) {
-            temp += s[j];
-            if(find(wordDict.begin(), wordDict.end(), temp) != wordDict.end()) {
-                if(fun(j + 1, s, wordDict))
-                return dp[i] = true;
-            }
-        }
-        return dp[i] = false;
+
+int fun(int i,string &s,map<string,int>&m1,string tmp){
+    if(i>=s.size()){
+        cout<<tmp<<endl;
+        if(tmp.size()==0) return 1;
+        return 0;
     }
+
+
+    string key=to_string(i)+"+"+tmp;
+
+    if(dp.find(key)!=dp.end()) return dp[key];
+
+    //  0+ab
+
+    int m=0;
+
+    tmp+=s[i];
+
+    if(m1.find(tmp)!=m1.end()){
+        int a=fun(i+1,s,m1,"");
+        m=m|a;
+    }
+
+    int a=fun(i+1,s,m1,tmp);
+    m=m|a;
+
+    return dp[key]=m;
+}
+
+
+
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
+        map<string,int>m1;
 
-        memset(dp, -1, sizeof(dp));
-
-        return fun(0, s, wordDict);
+        for(auto a:wordDict){
+            m1[a]++;
+        }
+        
+        dp.clear();
+        return fun(0,s,m1,"");
     }
 };
