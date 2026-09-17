@@ -9,8 +9,8 @@ int fun(int i,int j,string &text1,string &text2){
     }else{
          int c1=fun(i+1,j,text1,text2);
          int c2= fun(i,j+1,text1,text2);
-         ans=max(ans,c1);
-         ans=max(ans,c2);
+        //
+         ans=max(c1,c2);
     }
    return dp[i][j] = ans;
 }
