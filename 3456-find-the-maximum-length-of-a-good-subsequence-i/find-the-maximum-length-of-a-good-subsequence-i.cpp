@@ -4,7 +4,9 @@ int fun(int i,int prev,int k,vector<int> &nums){
     if(dp[i][prev +1][k] != -1) return dp[i][prev +1][k];
        int c1=0;
 
-       if (prev == -1 || nums[i] == nums[prev]) {
+       if (prev == -1 ) {
+        c1 = 1 + fun(i+1,i,k,nums);
+        }else if(nums[i] == nums[prev]){
         c1 = 1 + fun(i+1,i,k,nums);
         }
         else if (k>0) {
